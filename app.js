@@ -75,13 +75,15 @@ hbs.registerHelper('ifCond', function(v1, v2, options) {
 })
 
 // default value for title local
-app.locals.title = 'Car Fixer Assitant'
+app.locals.title = 'Carfix'
 
 const index = require('./routes/index')
 const auth = require('./routes/auth')
 const profile = require('./routes/profile')
+const properties = require('./routes/property')
 app.use('/', index)
 app.use('/auth', auth)
 app.use('/profile', profile)
+app.use('/properties', properties)
 
 module.exports = app

@@ -8,7 +8,6 @@ const userSchema = new Schema(
     email: {
       type: String,
       required: true
-      //unique: true
     },
     password: {
       type: String,
@@ -22,6 +21,10 @@ const userSchema = new Schema(
     confirmationCode: String,
     image: {
       type: String
+    },
+    role: {
+      type: String,
+      enum: ['Fixer', 'User']
     }
   },
   { timestamps: true }

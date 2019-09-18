@@ -5,32 +5,19 @@
         {{#if property}}
         Edit property
         {{else}}
-        Create property
-        {{/if}}
+        Solicitar asistencia
+          {{/if}}
       </h2>
       <form {{#if property}} action="/properties/{{property._id}}/edit" {{else}} action="/properties/new" {{/if}}
         class="uk-text-center" enctype="multipart/form-data" method="POST">
 
-        <div class="uk-margin">
-          <div class="uk-inline">
-            <span class="uk-form-icon" uk-icon="icon: home"></span>
-            <input name="title" class="uk-input" type="text" placeholder="Enter property title"
-              value="{{property.title}}">
-          </div>
-        </div>
 
-        <div class="uk-margin">
-          <div class="uk-inline">
-            <span class="uk-form-icon" uk-icon="icon: cart"></span>
-            <input name="pricePerNight" class="uk-input" type="number" placeholder="Enter price per night"
-              value="{{property.pricePerNight}}">
-          </div>
-        </div>
+      
 
         <div class="uk-margin">
           <div class="uk-inline">
             <textarea name="description" class="uk-textarea"
-              placeholder="Enter description">{{property.description}}</textarea>
+              placeholder="Qué necesitas?">{{property.description}}</textarea>
           </div>
         </div>
 
@@ -39,31 +26,31 @@
             <div uk-form-custom="target: true">
               <span class="uk-form-icon" uk-icon="icon: image"></span>
               <input name="images" type="file" multiple>
-              <input class="uk-input uk-form-width-medium" type="text" placeholder="profile picture" disabled>
+              <input class="uk-input uk-form-width-medium" type="text" placeholder="Adjunta imagen (opcional)" disabled>
             </div>
           </div>
         </div>
 
         <div class="uk-margin">
           <div class="uk-inline">
-            <span class="uk-form-icon" uk-icon="icon: cart"></span>
-            <input id="address" name="address" class="uk-input" type="text" placeholder="Enter property address"
+            <span class="uk-form-icon" uk-icon="icon: check"></span>
+            <input id="address" name="address" class="uk-input" type="text" placeholder="Ingresa la dirección donde estás"
               value="{{property.location.address}}">
           </div>
         </div>
 
         <div class="uk-margin">
           <div class="uk-inline">
-            <span class="uk-form-icon" uk-icon="icon: cart"></span>
-            <input id="lat" name="lat" class="uk-input" type="text" placeholder="Enter property latitude"
+            <span class="uk-form-icon" uk-icon="icon: check"></span>
+            <input id="lat" name="lat" class="uk-input"  type="hidden" type="text" placeholder="Enter property latitude"
               value="{{property.location.coordinates.[0]}}">
           </div>
         </div>
 
         <div class="uk-margin">
           <div class="uk-inline">
-            <span class="uk-form-icon" uk-icon="icon: cart"></span>
-            <input id="lng" name="lng" class="uk-input" type="text" placeholder="Enter property longitud"
+            <span class="uk-form-icon" uk-icon="icon: check"></span>
+            <input id="lng" name="lng" class="uk-input" type="hidden" type="text" placeholder="Enter property longitud"
               value="{{property.location.coordinates.[1]}}">
           </div>
         </div>
@@ -83,7 +70,7 @@
           {{#if property}}
           Edit property
           {{else}}
-          Create property
+         Solicitar asistencia
           {{/if}}
         </button>
 

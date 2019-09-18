@@ -19,6 +19,15 @@
               <input name="username" class="uk-input" type="text" placeholder="Enter your name">
             </div>
           </div>
+           <div class="uk-margin">
+            <div class="uk-inline">
+            <select name="role" class="uk-select">
+              <option selected disabled>Select your role</option>
+                <option value="User">User</option>
+                <option value ="Fixer">Fixer</option>
+            </select>
+            </div>
+          </div>
           {{/unless}}
 
           <div class="uk-margin">
@@ -55,6 +64,8 @@
           </button>
 
         </form>
+
+        
 
       </div>
     </div>

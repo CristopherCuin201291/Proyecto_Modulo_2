@@ -4,6 +4,17 @@ const User = require('../models/User')
 const passport = require('passport')
 const nodemailer = require('nodemailer')
 
+const isFixer = (req, res, next) => {
+  if (!req.user) return res.redirect('/')
+  if (req.user.role === 'Fixer') return next()
+  return res.redirect('/')
+}
+const isUser = (req, res, next) => {
+  if (!req.user) return res.redirect('/')
+  if (req.user.role === 'User') return next()
+  return res.redirect('/')
+}
+
 router.get('/login', (req, res) => {
   res.render('auth-form', { action: 'Login' })
 })
@@ -49,12 +60,12 @@ router.post('/register', (req, res) => {
   User.register(user, password)
     .then(data => {
       transporter.sendMail({
-        from: 'Car Fixer Assitant <noreply@carfixerassistant.com>',
+        from: 'Carfix <noreply@carfix.com>',
         to: data.email,
-        subject: 'Confirm Your Account at Car Fixer Assistant',
+        subject: 'Confirm Your Account at Carfix',
 
         text: `Hello ${data.username} 
-          Please click here to confirm your carfixer Assistant account: 
+          Please click here to confirm your Carfix account: 
           ${req.headers.origin}/auth/confirm/${data.confirmationCode}
           Thank you.`
       })
