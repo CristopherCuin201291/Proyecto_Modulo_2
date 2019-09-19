@@ -18,55 +18,47 @@
   <link rel='stylesheet'
     href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.3/mapbox-gl-directions.css'
     type='text/css' />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 
 <body>
 
-<<<<<<< HEAD
-  {{!-- ******************************** Navbar ************************************* --}}
-  {{!-- <nav class="navbar" role="navigation" aria-label="main navigation">
-   --}}
-    <div>
-      <ul>
-<div class="navbar-end">
+
+
+
+
+{{!-- ******************* Navbar ******************************** --}}
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  {{#unless user}}
+    <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-        {{#unless user}}
-        <li><a href="/auth/login" class="button is-light">Inicio</a></li>
-        <li><a href="/auth/register" class="button is-primary">Registro</a></li>
-  </div>
+          <a href="/auth/register" class="button is-link">
+            <strong>Regístrate</strong>
+          </a>
+          <a href="/auth/login" class="button is-light">
+            Inicia Sesión
+          </a>
+        </div>
       </div>
     </div>
+    {{/unless}}
 </nav>
 
 
-        {{!-- *************************+ Fin de Navbar************************ --}}
-        {{else}}
-        {{#if isFixer}}
-        <ul class="uk-navbar-nav">
-        <li><a href="/asistencias">Asistencias</a></li>
-      </ul>
-      {{else}}
-      <ul class="uk-navbar-nav">
-        <li><a href="/asistencias/new">Solicitar asistencia</a></li>
-      </ul>
-      {{/if}}
-        <li><a href="/profile">{{user.email}}</a></li>
-        <li><a href="/auth/logout">Logout</a></li>
-        {{/unless}}
-      </ul>
-    </div>
-  
-=======
->>>>>>> 27d884fd49646ad75f4a0c2d3d4bd59de919549e
+
 
 
   <div>
     <ul>
-      {{#unless user}}
+      {{!-- {{#unless user}}
       <li><a href="/auth/login">Iniciar Sesión</a></li>
       <li><a href="/auth/register">Regístrate</a></li>
-      {{/unless}}
+      {{/unless}} --}}
 
       {{#if isFixer}}
       <li><a href="/asistencias">Asistencias Disponibles</a></li>
@@ -79,6 +71,7 @@
     <li><a href="/profile">{{user.email}}</a></li>
     <li><a href="/auth/logout">Cerrar Sesión</a></li>
     </ul>
+    
     {{/if}}
 
     </ul>
@@ -87,11 +80,7 @@
 
   {{{body}}}
 
-<<<<<<< HEAD
-  
-=======
   <script src="/javascripts/script.js"></script>
->>>>>>> 27d884fd49646ad75f4a0c2d3d4bd59de919549e
 </body>
 
 </html>
