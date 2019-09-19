@@ -4,19 +4,21 @@ const passportLocalMongoose = require('passport-local-mongoose')
 
 const userSchema = new Schema(
   {
-    username: String,
+    name: String,
+    lastname: String,
     email: {
       type: String,
       required: true
     },
+    phonenumber: Number,
     password: {
       type: String,
       required: true
     },
     status: {
       type: String,
-      enum: ['Pending Confirmation', 'Active'],
-      default: 'Pending Confirmation'
+      enum: ['Confirmacion pendiente', 'Activo'],
+      default: 'Confirmacion pendiente'
     },
     confirmationCode: String,
     image: {

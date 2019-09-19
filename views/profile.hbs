@@ -1,42 +1,54 @@
-<section class="uk-section">
-  <div class="uk-container">
-    <div class="uk-grid-match" uk-grid>
-      <div class="uk-width-1-3">
         <div>
           {{#if user.image}}
-          <img class="uk-border-circle" style="width: 200px; height: 200px" src="{{user.image}}" alt="{{user.name}}">
+          <img style="width: 200px; height: 200px" src="{{user.image}}" alt="{{user.name}}">
           {{else}}
           <img src="https://static.thenounproject.com/png/1095867-200.png" alt="profile-image">
           {{/if}}
 
-          <div class="uk-margin-medium-top">
-            <p class="uk-text-lead">{{user.name}} {{user.lastname}}</p>
-          </div>
-
-          <div class="uk-margin-medium-top">
-            <p class="uk-text-lead">{{user.email}}</p>
-          </div>
-
-          <div>
-            <a class="uk-button uk-button-default" href="/profile/{{user._id}}/edit">editar perfil</a>
-          </div>
-
+            <p >{{user.name}} {{user.lastname}}</p>
+            <p >{{user.email}}</p>
+            <p>{{user.role}}</p>
+            <p>{{user.phonenumber}}</p>
+            <a href="/profile/{{user._id}}/edit">editar perfil</a>
         </div>
-      </div>
-      <div class="uk-width-expand">
         <div>
-          <div>
-            <a href="/properties/new" class="uk-button uk-button-primary">Solicitar Asistencia</a>
-          </div>
-          <div class="uk-section-small">
-            <div class="uk-grid-match uk-child-width-1-3 uk-grid-small" uk-grid>
-              {{#each properties as |property|}}
-              {{> ownerPropertyCard property}}
-              {{/each}}
-            </div>
-          </div>
+          <h2>Tus asistencias</h2>
+          {{#if isFixer}}
+          {{#each asistencias as |asistencia| }}
+            <div>{{!--  card --}}
+              <h3>{{asistencia.tipo}}</h3>
+              <span>{{asistencia.location.address}}</span>
+                  <div>
+                    <h4>Datos del solicitante:</h4>
+                    <p>{{asistencia.solicitante.name}} {{asistencia.solicitante.lastname}}</p>
+                    <p>{{asistencia.solicitante.email}}</p>
+                    <p>{{asistencia.solicitante.phonenumber}}</p>
+                  </div>
+                  <a href="/asistencias/{{asistencia._id}}">Ver ruta</a>
+                {{#each asistencia.images as |image|}}
+                     <img width="100px" src="{{image}}" alt="">
+                {{/each}}
+                <p>{{asistencia.description}}</p>
+                <strong>{{asistencia.status}}</strong>
+             </div>
+          {{/each}}
+          {{else}}
+          {{#each asistencias as |asistencia| }}
+            <div>{{!--  card --}}
+              <h3>{{asistencia.tipo}}</h3>
+              <span>{{asistencia.location.address}}</span>
+                 <div>
+                    <h4>Datos de tu reparador:</h4>
+                    <p>{{asistencia.fixer.name}} {{asistencia.fixer.lastname}}</p>
+                    <p>{{asistencia.fixer.email}}</p>
+                    <p>{{asistencia.fixer.phonenumber}}</p>
+                 </div>
+                {{#each asistencia.images as |image|}}
+                     <img width="100px" src="{{image}}" alt="">
+                {{/each}}
+                <p>{{asistencia.description}}</p>
+                <strong>{{asistencia.status}}</strong>
+             </div>
+          {{/each}}
+          {{/if}}
         </div>
-      </div>
-    </div>
-  </div>
-</section>

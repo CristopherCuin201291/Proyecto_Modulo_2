@@ -1,0 +1,52 @@
+<h1>esta es la ruta hasta el servicio</h1>
+<strong>{{asistencia.tipo}}</strong>
+<p>{{asistencia.location.address}}</p>
+<p>{{asistencia.solicitante.name}} {{asistencia.solicitante.lastname}}</p>
+<p>{{asistencia.solicitante.phonenumber}}</p>
+
+<p>* Para ver la ruta presiona en el marcador de tu ubicación y posteriormente la del servicio</p>
+
+<div class="uk-container uk-margin-medium-bottom">
+  <div id='map' style='width: 100%; height: 400px;'></div>
+</div>
+
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1IjoiY3J1c2VkbW9zcyIsImEiOiJjanUwYWJpcTIwMGlxNDRxbnVrbzRlZ2ZwIn0.JFaXPkdL0AJ7Vbtyc8lD4A';
+  let map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+  });
+  map.addControl(
+    new mapboxgl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true
+      },
+      trackUserLocation: true,
+      showUserLocation: true
+    })
+  );
+  map.addControl(new MapboxDirections({accessToken: mapboxgl.accessToken}), 'top-left')
+  map.addControl(new mapboxgl.NavigationControl());
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      const center = [
+        position.coords.longitude,
+        position.coords.latitude
+      ];
+      map.setZoom(12).setCenter(center);
+      new mapboxgl.Marker({ color: "red" })
+          .setLngLat(center)
+          .setPopup(new mapboxgl.Popup().setHTML("<p>Usted está aquí</p>"))
+          .addTo(map);
+    });
+  }
+
+      let [lng,lat] = [{{asistencia.location.coordinates}}]
+      console.log(lng, lat)
+      let asistencia_position = [lng, lat];
+      new mapboxgl.Marker()
+          .setLngLat(asistencia_position)
+          .setPopup(new mapboxgl.Popup().setHTML("<p>Dirección del servicio solicitado</p>"))
+          .addTo(map);
+</script>

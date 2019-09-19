@@ -4,17 +4,6 @@ const User = require('../models/User')
 const passport = require('passport')
 const nodemailer = require('nodemailer')
 
-const isFixer = (req, res, next) => {
-  if (!req.user) return res.redirect('/')
-  if (req.user.role === 'Fixer') return next()
-  return res.redirect('/')
-}
-const isUser = (req, res, next) => {
-  if (!req.user) return res.redirect('/')
-  if (req.user.role === 'User') return next()
-  return res.redirect('/')
-}
-
 router.get('/login', (req, res) => {
   res.render('auth-form', { action: 'Login' })
 })
@@ -37,7 +26,7 @@ router.post('/login', (req, res, next) => {
       }
       if (user.status === 'Pending Confirmation') {
         return res.render('auth-form', {
-          pendingConfirm: 'Please verify your email',
+          pendingConfirm: 'Por favor verifica tu email',
           action: 'Login'
         })
       }

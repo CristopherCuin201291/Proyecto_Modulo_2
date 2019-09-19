@@ -1,0 +1,63 @@
+      <h2>
+        {{#if asistencia}}
+        Edit asistencia
+        {{else}}
+        Create asistencia
+        {{/if}}
+      </h2>
+      <form {{#if asistencia}} action="/asistencias/{{asistencia._id}}/edit" {{else}} action="/asistencias/new" {{/if}}
+        enctype="multipart/form-data" method="POST">
+
+            <div>
+              <select name="tipo">
+              <option value="" disabled>Selecciona un servicio</option>
+              <option value="Cambio de llanta">Cambio de llanta</option>
+               <option value='Paso de corriente'>Paso de corriente</option>
+               <option value="Servicio de grúa">Servicio de grúa</option>
+               <option value="Abasto de gasolina">Abasto de gasolina</option>
+            </select>
+            <textarea name="description"
+              placeholder="Enter description">{{property.description}}</textarea>
+              <input name="images" type="file" multiple>
+            </div>
+
+           <div>
+              <input id="address" name="address" type="text" placeholder="Enter property address"
+              value="{{property.location.address}}">
+            <input id="lat" name="lat"  type="text" placeholder="Enter property latitude"
+              value="{{property.location.coordinates.[0]}}">
+            <input id="lng" name="lng" type="text" placeholder="Enter property longitud"
+              value="{{property.location.coordinates.[1]}}">
+           </div>
+
+        <div>
+          <div id="search"></div>
+          <div id='map' style='display: inline-flex;width: 400px; height: 300px;'></div>
+        </div>
+
+        <button type="submit">
+          Submit
+        </button>
+
+      </form>
+
+<script>
+  const address = document.getElementById("address");
+  const lat = document.getElementById("lat");
+  const lng = document.getElementById("lng");
+  mapboxgl.accessToken = 'pk.eyJ1IjoiY3J1c2VkbW9zcyIsImEiOiJjanUwYWJpcTIwMGlxNDRxbnVrbzRlZ2ZwIn0.JFaXPkdL0AJ7Vbtyc8lD4A';
+  let map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11'
+  });
+  const geocoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken
+  })
+  document.getElementById("search").appendChild(geocoder.onAdd(map))
+  geocoder.on("result", (e) => {
+    console.log(e.result)
+    address.value = e.result.place_name;
+    lat.value = e.result.center[0];
+    lng.value = e.result.center[1];
+  })
+</script>

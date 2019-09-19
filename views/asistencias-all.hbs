@@ -1,0 +1,23 @@
+<h1>todas las asistencias disponibles</h1>
+
+    {{#each asistencias as |asistencia| }}
+          <div>{{!--  card --}}
+             <h3>{{asistencia.tipo}}</h3>
+          <span>{{asistencia.location.address}}</span>
+          <div>
+            <h4>Datos del solicitante:</h4>
+            <p>{{asistencia.solicitante.name}} {{asistencia.solicitante.lastname}}</p>
+          <p>{{asistencia.solicitante.email}}</p>
+          <p>{{asistencia.solicitante.phonenumber}}</p>
+          </div>
+          {{#each asistencia.images as |image|}}
+          <img width="100px" src="{{image}}" alt="">
+          {{/each}}
+          <p>{{asistencia.description}}</p>
+          <strong>{{asistencia.status}}</strong>
+          </div>
+          <form action="/asistencias" method="POST">
+          <input type="text" hidden value="{{asistencia._id}}" name="id">
+            <button type="submit">Tomar servicio</button>
+          </form>
+          {{/each}}

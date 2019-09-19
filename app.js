@@ -46,7 +46,7 @@ app.use(
     })
   })
 )
-
+//Use Passport
 app.use(passport.initialize())
 app.use(passport.session())
 
@@ -65,6 +65,7 @@ app.set('view engine', 'hbs')
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')))
 
+//Setup HBS
 hbs.registerPartials(path.join(__dirname, '/views/partials'))
 hbs.registerHelper('ifCond', function(v1, v2, options) {
   console.log(String(v1) === String(v2))
@@ -80,10 +81,11 @@ app.locals.title = 'Carfix'
 const index = require('./routes/index')
 const auth = require('./routes/auth')
 const profile = require('./routes/profile')
-const properties = require('./routes/property')
+const asistencias = require('./routes/asistencias')
+
 app.use('/', index)
 app.use('/auth', auth)
 app.use('/profile', profile)
-app.use('/properties', properties)
+app.use('/asistencias', asistencias)
 
 module.exports = app

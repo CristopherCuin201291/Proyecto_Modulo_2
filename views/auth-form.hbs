@@ -1,71 +1,77 @@
-<section class="uk-section">
-  <div class="uk-container">
-    <div class="uk-flex uk-flex-center">
-      <div class="uk-flex uk-flex-center uk-flex-column uk-width-1-3">
-        <h2 class="uk-heading uk-flex uk-flex-center">
+<section>
+  <div>
+    <div>
+      <div>
+        <h2>
           {{#if action}}
           {{action}}
           {{else}}
-          Register
+          Regístrate
           {{/if}}
         </h2>
-        <form {{#if action}} action="/auth/login" {{else}} action="/auth/register" {{/if}} class="uk-text-center"
-          method="POST">
+
+        <form {{#if action}} action="/auth/login" {{else}} action="/auth/register" {{/if}} method="POST">
 
           {{#unless action}}
-          <div class="uk-margin">
-            <div class="uk-inline">
-              <span class="uk-form-icon" uk-icon="icon: user"></span>
-              <input name="username" class="uk-input" type="text" placeholder="Enter your name">
+          <div>
+
+            <div>
+              <input name="name" type="text" placeholder="Ingresa tu nombre">
+            </div>
+
+            <div>
+              <input name="lastname" type="text" placeholder="Ingresa tu apellido">
+            </div>
+
+            <div>
+              <select name="role">
+                <option selected disabled>Selecciona tu tipo de perfil</option>
+                <option value="User">Usuario</option>
+                <option value="Fixer">Fixer</option>
+              </select>
             </div>
           </div>
-           <div class="uk-margin">
-            <div class="uk-inline">
-            <select name="role" class="uk-select">
-              <option selected disabled>Select your role</option>
-                <option value="User">User</option>
-                <option value ="Fixer">Fixer</option>
-            </select>
-            </div>
+
+          <div>
+            <input name="phonenumber" type="number" placeholder="Ingresa tu teléfono">
           </div>
           {{/unless}}
 
-          <div class="uk-margin">
-            <div class="uk-inline">
-              <span class="uk-form-icon" uk-icon="icon: mail"></span>
-              <input name="email" class="uk-input" type="email" placeholder="example@example.com">
+          <div>
+            <div>
+              <input name="email" type="email" placeholder="example@example.com">
             </div>
           </div>
 
-          <div class="uk-margin">
-            <div class="uk-inline">
-              <span class="uk-form-icon" uk-icon="icon: lock"></span>
-              <input name="password" class="uk-input" type="password" placeholder="Enter your password">
+          <div>
+            <div>
+              <input name="password" type="password" placeholder="Ingresa tu contraseña">
             </div>
           </div>
 
           {{#if err.message}}
-          <div class="uk-alert-danger uk-width-1-3 uk-margin-auto" uk-alert>
+          <div>
             <p>{{err.message}}</p>
           </div>
           {{/if}}
+
           {{#if pendingConfirm}}
-          <div class="uk-alert-danger uk-width-1-3 uk-margin-auto" uk-alert>
+          <div>
             <p>{{pendingConfirm}}</p>
           </div>
           {{/if}}
 
-          <button class="uk-button uk-button-primary">
+          <button>
             {{#if action}}
             {{action}}
             {{else}}
-            Register
+            Regístrate ahora
             {{/if}}
           </button>
 
         </form>
 
-        
+
 
       </div>
     </div>

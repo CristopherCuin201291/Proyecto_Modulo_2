@@ -1,20 +1,20 @@
 const mongoose = require('mongoose')
-
 const Schema = mongoose.Schema
 
-const propertySchema = new Schema(
+const asistenciaSchema = new Schema(
   {
-    owner: {
+    solicitante: {
       type: Schema.Types.ObjectId,
       required: true,
       ref: 'User'
     },
-    title: {
-      type: String,
-      required: true
+    fixer: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
     },
-    pricePerNight: {
-      type: Number,
+    tipo: {
+      type: String,
+      enum: ['Cambio de llanta', 'Paso de corriente', 'Servicio de grúa', 'Abasto de gasolina'],
       required: true
     },
     location: {
@@ -32,16 +32,20 @@ const propertySchema = new Schema(
     description: {
       type: String
     },
+    status: {
+      type: String,
+      enum: ['Confirmación pendiente', 'Aceptada'],
+      default: 'Confirmación pendiente'
+    },
     images: {
-      type: [String],
-      required: true
+      type: [String]
     }
   },
   { timestamps: true }
 )
 
-propertySchema.index({
+asistenciaSchema.index({
   location: '2dsphere'
 })
 
-module.exports = mongoose.model('Property', propertySchema)
+module.exports = mongoose.model('Asistencia', asistenciaSchema)
