@@ -4,27 +4,27 @@
           {{else}}
           <img src="https://static.thenounproject.com/png/1095867-200.png" alt="profile-image">
           {{/if}}
-
-            <p >{{user.name}} {{user.lastname}}</p>
-            <p >{{user.email}}</p>
-            <p>{{user.role}}</p>
-            <p>{{user.phonenumber}}</p>
+            <p >Nombre: {{user.name}} {{user.lastname}}</p>
+            <p >Email: {{user.email}}</p>
+            <p>Tipo de perfil: {{user.role}}</p>
+            <p>Teléfono: {{user.phonenumber}}</p>
             <a href="/profile/{{user._id}}/edit">editar perfil</a>
         </div>
         <div>
-          <h2>Tus asistencias</h2>
-          {{#if isFixer}}
+        
+          {{#if isFixer}} 
+           <h2>Asistencias Aceptadas</h2>
           {{#each asistencias as |asistencia| }}
-            <div>{{!--  card --}}
+            <div>
               <h3>{{asistencia.tipo}}</h3>
               <span>{{asistencia.location.address}}</span>
                   <div>
                     <h4>Datos del solicitante:</h4>
-                    <p>{{asistencia.solicitante.name}} {{asistencia.solicitante.lastname}}</p>
-                    <p>{{asistencia.solicitante.email}}</p>
-                    <p>{{asistencia.solicitante.phonenumber}}</p>
+                    <p>Nombre: {{asistencia.solicitante.name}} {{asistencia.solicitante.lastname}}</p>
+                    <p>Email: {{asistencia.solicitante.email}}</p>
+                    <p>Teléfono: {{asistencia.solicitante.phonenumber}}</p>
                   </div>
-                  <a href="/asistencias/{{asistencia._id}}">Ver ruta</a>
+                  <a href="/asistencias/{{asistencia._id}}"> Ver la ubicación del solicitante</a>
                 {{#each asistencia.images as |image|}}
                      <img width="100px" src="{{image}}" alt="">
                 {{/each}}
@@ -33,12 +33,13 @@
              </div>
           {{/each}}
           {{else}}
+          <h2>Asistencias Solicitadas</h2>
           {{#each asistencias as |asistencia| }}
-            <div>{{!--  card --}}
+            <div>
               <h3>{{asistencia.tipo}}</h3>
               <span>{{asistencia.location.address}}</span>
                  <div>
-                    <h4>Datos de tu reparador:</h4>
+                    <h4>Datos de tu Fixer:</h4>
                     <p>{{asistencia.fixer.name}} {{asistencia.fixer.lastname}}</p>
                     <p>{{asistencia.fixer.email}}</p>
                     <p>{{asistencia.fixer.phonenumber}}</p>

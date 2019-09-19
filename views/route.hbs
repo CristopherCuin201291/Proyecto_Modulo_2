@@ -1,12 +1,13 @@
-<h1>esta es la ruta hasta el servicio</h1>
-<strong>{{asistencia.tipo}}</strong>
-<p>{{asistencia.location.address}}</p>
-<p>{{asistencia.solicitante.name}} {{asistencia.solicitante.lastname}}</p>
-<p>{{asistencia.solicitante.phonenumber}}</p>
+<h1>Consulta la ruta para llegar al usuario</h1>
+<strong>Servicio: {{asistencia.tipo}}</strong>
+<p>Descripción: {{asistencia.description}}</p>
+<p>Direccion: {{asistencia.location.address}}</p>
+<p>Nombre: {{asistencia.solicitante.name}} {{asistencia.solicitante.lastname}}</p>
+<p>Teléfono: {{asistencia.solicitante.phonenumber}}</p>
 
-<p>* Para ver la ruta presiona en el marcador de tu ubicación y posteriormente la del servicio</p>
+<p> Para dirigirte a la ubicación del usuario primero presiona tu ubicación en el mapa (marcador rojo) , después presiona la ruta del usuario que solicita (marcador azul) </p>
 
-<div class="uk-container uk-margin-medium-bottom">
+<div >
   <div id='map' style='width: 100%; height: 400px;'></div>
 </div>
 
