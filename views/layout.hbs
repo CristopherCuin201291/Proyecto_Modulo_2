@@ -6,14 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
+<<<<<<< HEAD
 
   <script src='https://static-assets.mapbox.com/gl-pricing/dist/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+=======
+  <script src="https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.js"></script>
+  <script
+    src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.3/mapbox-gl-directions.js'></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css" rel="stylesheet" />
+>>>>>>> 417aa7a3c4581ca36c146b2ada3ef63748fa6775
   <script
     src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.6/mapbox-gl-geocoder.min.js'></script>
   <link rel='stylesheet'
     href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.6/mapbox-gl-geocoder.css'
     type='text/css' />
+<<<<<<< HEAD
 
   <script src="https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.js"></script>
   <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.3/mapbox-gl-directions.js'></script>
@@ -28,10 +36,18 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <link rel="stylesheet" href="/stylesheets/style.css" />
+=======
+  <link rel='stylesheet'
+    href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.3/mapbox-gl-directions.css'
+    type='text/css' />
+  <!-- UIkit CSS -->
+ 
+>>>>>>> 417aa7a3c4581ca36c146b2ada3ef63748fa6775
 </head>
 
 <body>
 
+<<<<<<< HEAD
   {{!-- ******************************** Navbar ************************************* --}}
   
     <div class="uk-navbar-right">
@@ -54,14 +70,42 @@
         {{/unless}}
       </ul>
     </div>
+=======
+
+
+  <div >
+    <ul>
+    {{#unless user}}
+    <li><a href="/auth/login">Iniciar Sesión</a></li>
+    <li><a href="/auth/register">Regístrate</a></li>
+    {{/unless}}
+    
+    {{#if isFixer}}
+    <li><a href="/asistencias">Asistencias Disponibles</a></li>
+    <li><a href="/profile">{{user.email}}</a></li>
+    <li><a href="/auth/logout">Cerrar Sesión</a></li>
+    </ul>
+    {{/if}}
+    {{#if isUser}}
+    <li><a href="/asistencias/new">Solicitar Asistencia</a></li>
+    <li><a href="/profile">{{user.email}}</a></li>
+    <li><a href="/auth/logout">Cerrar Sesión</a></li>
+    </ul>
+    {{/if}}
+    </ul>
+  </div>
+>>>>>>> 417aa7a3c4581ca36c146b2ada3ef63748fa6775
   </nav>
 
 
+<<<<<<< HEAD
   {{{body}}}
 
   <!-- UIkit JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit-icons.min.js"></script>
+=======
+>>>>>>> 417aa7a3c4581ca36c146b2ada3ef63748fa6775
   <script src="/javascripts/script.js"></script>
 </body>
 
