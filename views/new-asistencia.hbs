@@ -1,8 +1,9 @@
       <h2>
         {{#if asistencia}}
-        Edit asistencia
+        <button type="submit">Edita tu solicitud de asistencia</button>
+        
         {{else}}
-        Create asistencia
+       <h2>Solicita una asistencia</h2> 
         {{/if}}
       </h2>
       <form {{#if asistencia}} action="/asistencias/{{asistencia._id}}/edit" {{else}} action="/asistencias/new" {{/if}}
@@ -10,33 +11,31 @@
 
             <div>
               <select name="tipo">
-              <option value="" disabled>Selecciona un servicio</option>
+            <option selected disabled>Selecciona un servicio</option>
               <option value="Cambio de llanta">Cambio de llanta</option>
                <option value='Paso de corriente'>Paso de corriente</option>
                <option value="Servicio de grúa">Servicio de grúa</option>
                <option value="Abasto de gasolina">Abasto de gasolina</option>
             </select>
             <textarea name="description"
-              placeholder="Enter description">{{property.description}}</textarea>
+              placeholder="Ingresa una descripción de tu problema (opcional)">{{asistencia.description}}</textarea>
               <input name="images" type="file" multiple>
             </div>
 
            <div>
-              <input id="address" name="address" type="text" placeholder="Enter property address"
-              value="{{property.location.address}}">
-            <input id="lat" name="lat"  type="text" placeholder="Enter property latitude"
-              value="{{property.location.coordinates.[0]}}">
-            <input id="lng" name="lng" type="text" placeholder="Enter property longitud"
-              value="{{property.location.coordinates.[1]}}">
+              <input hidden id="address" name="address" type="text" placeholder=""
+              value="{{asistencia.location.address}}">
+            <input hidden id="lat" name="lat"  type="text" value="{{asistencia.location.coordinates.[0]}}">
+            <input hidden id="lng" name="lng" type="text" value="{{asistencia.location.coordinates.[1]}}">
            </div>
-
+<div>Ingresa tu ubicación actual</div>
         <div>
           <div id="search"></div>
           <div id='map' style='display: inline-flex;width: 400px; height: 300px;'></div>
         </div>
 
         <button type="submit">
-          Submit
+          Enviar ubicación
         </button>
 
       </form>

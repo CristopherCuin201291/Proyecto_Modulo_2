@@ -26,7 +26,8 @@ const userSchema = new Schema(
     },
     role: {
       type: String,
-      enum: ['Fixer', 'User']
+      enum: ['Fixer', 'User'],
+      required: true
     }
   },
   { timestamps: true }

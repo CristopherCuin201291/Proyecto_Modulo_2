@@ -34,7 +34,7 @@ const asistenciaSchema = new Schema(
     },
     status: {
       type: String,
-      enum: ['Confirmación pendiente', 'Aceptada'],
+      enum: ['Confirmación pendiente', 'Aceptada', 'Cancelada'],
       default: 'Confirmación pendiente'
     },
     images: {
