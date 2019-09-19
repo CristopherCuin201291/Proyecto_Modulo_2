@@ -3,16 +3,79 @@
     <div class="columns is-mobile is-centered">
       <div class="column is-8">
 
+<h1>
+          {{#if action}}
+          {{action}}
+          {{else}}
+          Regístrate aquí
+          {{/if}}
+        </h1>
+
+        <form {{#if action}} action="/auth/login" {{else}} action="/auth/register" {{/if}} method="POST">
+
+          {{#unless action}}
+
 <div class="box">
   <form action="" method="post">
 
 
+
+{{!-- BULMA --}}
 <div class="field">
-  <label class="label">Name</label>
+  <label class="label">Nombre</label>
   <div class="control">
-    <input class="input" type="text" placeholder="Text input">
+    <input class="input" type="text" placeholder="Escribe tu nombre aquí">
   </div>
 </div>
+
+<div class="field">
+  <label class="label">Apellido</label>
+  <div class="control">
+    <input class="input" type="text" placeholder="Escribe tu apellido aquí">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label">Selecciona tu perfil</label>
+  <div class="control">
+    <div class="select">
+      <select>
+        <option>¿Eres Usuario o Fixer?</option>
+        <option value="User">Usuario</option>
+                <option value="Fixer">Fixer</option>
+      </select>
+    </div>
+  </div>
+</div>
+ 
+
+<div>
+<div class="field">
+  <label class="label">Celular</label>
+  <div class="control">
+    <input class="input" name="phonenumber" type="number" placeholder="Escribe tu número de celular de contacto">
+ 
+ 
+ 
+  </div>
+</div>
+</div>
+ {{!-- <input name="phonenumber" type="number" placeholder="Teléfono movil"> --}} 
+  {{/unless}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div class="field">
   <label class="label">Username</label>
@@ -42,85 +105,34 @@
   <p class="help is-danger">This email is invalid</p>
 </div>
 
-<div class="field">
-  <label class="label">Subject</label>
-  <div class="control">
-    <div class="select">
-      <select>
-        <option>Select dropdown</option>
-        <option>With options</option>
-      </select>
-    </div>
-  </div>
+
+ </form>
 </div>
-  </form>
-</div>
-
-
-
-
-not bulma
-
-<div class="field is-grouped">
-  <div class="control">
-     <button class="button is-link">
-            {{#if action}}
-            {{action}}
-            {{else}}
-            Regístrate ahora
-            {{/if}}
-          {{!-- </button><button class="button is-link">Regístrate ahora</button> --}}
-  </div>
-</div>
-
-
 
 
         {{!-- ****************original******* --}}
-        <h2>
-          {{#if action}}
-          {{action}}
-          {{else}}
-          Regístrate
-          {{/if}}
-        </h2>
+        
 
-        <form {{#if action}} action="/auth/login" {{else}} action="/auth/register" {{/if}} method="POST">
 
-          {{#unless action}}
-          <div>
-
-            <div>
-              <input name="name" type="text" placeholder="Ingresa tu nombre">
-            </div>
-
-            <div>
-              <input name="lastname" type="text" placeholder="Ingresa tu apellido">
-            </div>
-
-            <div>
-              <select name="role">
-                <option selected disabled>Selecciona tu tipo de perfil</option>
-                <option value="User">Usuario</option>
-                <option value="Fixer">Fixer</option>
-              </select>
-            </div>
-          </div>
 
           <div>
-            <input name="phonenumber" type="number" placeholder="Ingresa tu teléfono">
-          </div>
-          {{/unless}}
 
+            
+
+            
+
+            
+
+          
           <div>
             <div>
-              <input name="email" type="email" placeholder="example@example.com">
+              <input name="email" type="email" placeholder="Correo electrónico">
             </div>
           </div>
 
           <div>
             <div>
-              <input name="password" type="password" placeholder="Ingresa tu contraseña">
+              <input name="password" type="password" placeholder="Contraseña">
             </div>
           </div>
 
@@ -136,15 +148,28 @@ not bulma
           </div>
           {{/if}}
 
-          <button>
+
+
+  <div class="control">
+          <button class="button is-link">
             {{#if action}}
             {{action}}
             {{else}}
             Regístrate ahora
             {{/if}}
           </button>
-
+ </div>
         </form>
+
+
+
+
+
+
+
+
+
+
 
 
 

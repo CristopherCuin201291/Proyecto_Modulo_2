@@ -33,12 +33,23 @@
 <body>
 
   {{!-- ******************************** Navbar ************************************* --}}
-  
-    <div class="uk-navbar-right">
-      <ul class="uk-navbar-nav">
+  {{!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+   --}}
+    <div>
+      <ul>
+<div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
         {{#unless user}}
-        <li><a href="/auth/login">Login</a></li>
-        <li><a href="/auth/register">Register</a></li>
+        <li><a href="/auth/login" class="button is-light">Inicio</a></li>
+        <li><a href="/auth/register" class="button is-primary">Registro</a></li>
+  </div>
+      </div>
+    </div>
+</nav>
+
+
+        {{!-- *************************+ Fin de Navbar************************ --}}
         {{else}}
         {{#if isFixer}}
         <ul class="uk-navbar-nav">
@@ -54,15 +65,12 @@
         {{/unless}}
       </ul>
     </div>
-  </nav>
+  
 
 
   {{{body}}}
 
-  <!-- UIkit JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit-icons.min.js"></script>
-  <script src="/javascripts/script.js"></script>
+  
 </body>
 
 </html>
