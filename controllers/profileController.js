@@ -10,13 +10,11 @@ isAuth = (req, res, next) => {
 }
 
 exports.home = (req, res) => {
-  console.log(req.user)
   const { user } = req
   if (user.role === 'User') {
     Asistencia.find({ solicitante: user._id })
       .populate('fixer')
       .then(asistencias => {
-        console.log(asistencias)
         res.render('profile', {
           user,
           asistencias,

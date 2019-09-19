@@ -3,7 +3,7 @@ const passport = require('passport')
 const nodemailer = require('nodemailer')
 
 exports.getLogin = (req, res) => {
-  res.render('auth-form', { action: 'Login' })
+  res.render('auth-form', { action: 'Iniciar Sesión' })
 }
 
 exports.getRegister = (req, res) => {
@@ -25,7 +25,7 @@ exports.postLogin = (req, res, next) => {
       if (user.status === 'Pending Confirmation') {
         return res.render('auth-form', {
           pendingConfirm: 'Por favor verifica tu email',
-          action: 'Login'
+          action: 'Iniciar Sesión'
         })
       }
       return res.redirect('/profile')
@@ -34,7 +34,6 @@ exports.postLogin = (req, res, next) => {
 }
 
 exports.postResgister = (req, res) => {
-  console.log(req)
   const { password } = req.body
   const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
   let token = ''
@@ -65,20 +64,20 @@ exports.postResgister = (req, res) => {
     })
 }
 
-exports.getConfirmation=(req, res) => {
+exports.getConfirmation = (req, res) => {
   User.find({ confirmationCode: req.params.confirmCode }).then(user => {
     let id = user[0]._id
 
     User.findByIdAndUpdate(id, { status: 'Activo' }, () => {
       let userEmail = user[0].email
       let userId = user[0]._id
-      let userName=user[0].name
+      let userName = user[0].name
       res.render('confirm', { userEmail, userId, userName })
     })
   })
 }
 
-exports.getLogout=(req, res) => {
+exports.getLogout = (req, res) => {
   req.logout()
   res.redirect('/')
 }

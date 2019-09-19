@@ -18,10 +18,15 @@ exports.getTodasAsistencias = (req, res) => {
     })
 }
 
-exports.postAsignarFixer = (req, res) => {
+exports.postAceptarAsistencia = (req, res) => {
   let { _id: fixer } = req.user
   let { id } = req.body
-  Asistencia.findByIdAndUpdate(id, { status: 'Activo', fixer: fixer }).then(() => res.redirect('/profile'))
+  Asistencia.findByIdAndUpdate(id, { status: 'Aceptada', fixer: fixer }).then(() => res.redirect('/profile'))
+}
+
+exports.postCancelarAsistencia = (req, res) => {
+  let { id } = req.body
+  Asistencia.findByIdAndUpdate(id, { status: 'Cancelada' }).then(() => res.redirect('/profile'))
 }
 
 exports.getVerAsistencia = (req, res) => {

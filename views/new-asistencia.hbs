@@ -1,8 +1,9 @@
       <h2>
         {{#if asistencia}}
-        Edita tu solicitud de asistencia
+        <button type="submit">Edita tu solicitud de asistencia</button>
+        
         {{else}}
-        Solicita una asistencia
+       <h2>Solicita una asistencia</h2> 
         {{/if}}
       </h2>
       <form {{#if asistencia}} action="/asistencias/{{asistencia._id}}/edit" {{else}} action="/asistencias/new" {{/if}}
