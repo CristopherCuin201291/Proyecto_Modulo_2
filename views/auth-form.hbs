@@ -1,98 +1,61 @@
 <section>
-  <div>
     <div class="columns is-mobile is-centered">
-      <div class="column is-8">
-
-<h1>
+      <div clas="column is-8">
+       <h1 class="title"><br>
           {{#if action}}
           {{action}}
           {{else}}
-          Regístrate aquí
+          Regístrate
           {{/if}}
         </h1>
-
         <form {{#if action}} action="/auth/login" {{else}} action="/auth/register" {{/if}} method="POST">
 
           {{#unless action}}
+          <div class="box">
 
-<div class="box">
-  <form action="" method="post">
-
-
-
-{{!-- BULMA --}}
-<div class="field">
-  <label class="label">Nombre</label>
+          <div class="field">
   <div class="control">
-    <input class="input" type="text" placeholder="Escribe tu nombre aquí">
-  </div>
-</div>
-
-<div class="field">
-  <label class="label">Apellido</label>
-  <div class="control">
-    <input class="input" type="text" placeholder="Escribe tu apellido aquí">
-  </div>
-</div>
-
-<div class="field">
-  <label class="label">Selecciona tu perfil</label>
-  <div class="control">
-    <div class="select">
-      <select>
-        <option>¿Eres Usuario o Fixer?</option>
-        <option value="User">Usuario</option>
-                <option value="Fixer">Fixer</option>
-      </select>
+              <input class="input" name="name" type="text" placeholder="Ingresa tu nombre">
+            </div>
     </div>
+
+      <div class="field">
+      <div class="control">
+              <input class="input" name="lastname" type="text" placeholder="Ingresa tu apellido">
+            </div>
+            </div>
+
+  <div class="field">
+    <div class="control">
+      <div class="select">
+              <select name="role">
+                <option selected disabled>Selecciona tu tipo de perfil</option>
+                <option value="User">Usuario</option>
+                <option value="Fixer">Fixer</option>
+              </select>
+            </div>
+          </div>
   </div>
-</div>
- 
-
-<div>
-<div class="field">
-  <label class="label">Celular</label>
-  <div class="control">
-    <input class="input" name="phonenumber" type="number" placeholder="Escribe tu número de celular de contacto">
- 
- 
- 
-  </div>
-</div>
-</div>
- {{!-- <input name="phonenumber" type="number" placeholder="Teléfono movil"> --}} 
-  {{/unless}}
-
-
-<div class="field">
-  <label class="label">Email</label>
-  <div class="control has-icons-left has-icons-right">
-    <input class="input is-danger" type="email" name="email" placeholder="Correo electrónico" value="correo@">
-    <span class="icon is-small is-left">
-      <i class="fas fa-envelope"></i>
-    </span>
-    <span class="icon is-small is-right">
-      <i class="fas fa-exclamation-triangle"></i>
-    </span>
-  </div>
-  <p class="help is-danger">Correo no válido</p>
-</div>
-
 
 <div class="field">
-  <label class="label">Username</label>
-  <div class="control has-icons-left has-icons-right">
-    <input class="input is-success" name="password" type="passwort" placeholder="Contraseñat" value="contraseña">
-    <span class="icon is-small is-left">
-      <i class="fas fa-user"></i>
-    </span>
-    <span class="icon is-small is-right">
-      <i class="fas fa-check"></i>
-    </span>
-  </div>
-  <p class="help is-success">This username is available</p>
-</div>
-        
+<div class="control">
+            <input class="input" name="phonenumber" type="text" placeholder="Ingresa tu teléfono">
+          </div>
+          </div>
+           {{/unless}}
+
+<div class="field">
+<div class="control">
+              <input class="input" name="email" type="email" placeholder="example@example.com">
+            </div>
+          </div>
+
+<div class="field">
+<div class="control">
+              <input class="input" name="password" type="password" placeholder="Ingresa tu contraseña">
+            </div>
+          </div>
+
           {{#if err.message}}
           <div>
             <p>{{err.message}}</p>
@@ -105,23 +68,20 @@
           </div>
           {{/if}}
 
-
-
-  <div class="control">
-          <button class="button is-link">
+          <button class="button is-success">
             {{#if action}}
             {{action}}
             {{else}}
-            Registrate ahora
+            Regístrate ahora
             {{/if}}
           </button>
- </div>
-        </form>
+          
 
 
 
-      </div>
-    </div>
-
-  </div>
+       
+</div>
+ </form>
+</div>
+</div>
 </section>

@@ -27,14 +27,11 @@
 <body>
 
 
-
-
-
 {{!-- ******************* Navbar ******************************** --}}
 
 <nav class="navbar" role="navigation" aria-label="main navigation">
   {{#unless user}}
-    <div class="navbar-end">
+  <nav class="navbar navbar-end" role="navigation" aria-label="main navigation">
       <div class="navbar-item">
         <div class="buttons">
           <a href="/auth/register" class="button is-link">
@@ -46,32 +43,23 @@
         </div>
       </div>
     </div>
-    {{/unless}}
-</nav>
+    </nav>
+    {{/unless}} 
 
-
-
-
-
-  <div>
-    <ul>
-      {{!-- {{#unless user}}
-      <li><a href="/auth/login">Iniciar Sesión</a></li>
-      <li><a href="/auth/register">Regístrate</a></li>
-      {{/unless}} --}}
-
-      {{#if isFixer}}
-      <li><a href="/asistencias">Asistencias Disponibles</a></li>
-      <li><a href="/profile">{{user.email}}</a></li>
-      <li><a href="/auth/logout">Cerrar Sesión</a></li>
-    </ul>
+  {{#if isFixer}}
+    <nav class="navbar navbar-end" role="navigation" aria-label="main navigation">
+    <div class="navbar-item"> <a class="button is-success" href="/asistencias">Asistencias Disponibles</a></div>
+    <div class="navbar-item"> <a class="button is-info" href="/profile">{{user.email}}</a></div>
+      <div class="navbar-item"><a class="button is-danger" href="/auth/logout">Cerrar Sesión</a></div>
+      
+    </nav>
     {{/if}}
     {{#if isUser}}
-    <li><a href="/asistencias/new">Solicitar Asistencia</a></li>
-    <li><a href="/profile">{{user.email}}</a></li>
-    <li><a href="/auth/logout">Cerrar Sesión</a></li>
-    </ul>
-    
+    <nav class="navbar navbar-end" role="navigation" aria-label="main navigation">
+        <div class="navbar-item" >    <a class="button is-success" href="/asistencias/new">Solicitar Asistencia</a></div>
+      <div class="navbar-item"><a class="button is-info" href="/profile">{{user.email}}</a></div>
+      <div class="navbar-item"><a class="button is-danger" href="/auth/logout">Cerrar Sesión</a> </div>
+    </nav>
     {{/if}}
 
     </ul>
@@ -80,7 +68,18 @@
 
   {{{body}}}
 
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <p>Por ahora CarFix está disponible sólo en la Ciudad de México</p>
+      <p><strong>Carfix</strong> by Cristopher Cuin && Dulce García </p>
+      <p>Todos los derechos reservados  2019 ©</p>
+      
+    </p>
+  </div>
+</footer>
   <script src="/javascripts/script.js"></script>
+
 </body>
 
 </html>

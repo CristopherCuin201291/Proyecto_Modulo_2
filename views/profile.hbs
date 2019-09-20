@@ -1,62 +1,82 @@
-        <div>
+
           {{#if user.image}}
+          <div class="box "></div>
+          <div class="card">
+            <div class="card-image">
+           
           <img style="width: 200px; height: 200px" src="{{user.image}}" alt="{{user.name}}">
+    
+          </div>
+          </div>
           {{else}}
-          <img src="https://static.thenounproject.com/png/1095867-200.png" alt="profile-image">
+          <div class="card">
+            <div class="card-image">
+          <img width ="200px" height="200px"src="https://static.thenounproject.com/png/1095867-200.png" alt="profile-image">
+          </div>
+          </div>
+          </div>
           {{/if}}
-            <p >Nombre: {{user.name}} {{user.lastname}}</p>
-            <p >Email: {{user.email}}</p>
-            <p>Tipo de perfil: {{user.role}}</p>
-            <p>Teléfono: {{user.phonenumber}}</p>
-            <a href="/profile/{{user._id}}/edit">Editar perfil</a>
-        </div>
-        <div>
-        
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+            <span class="title is-5" >Nombre:</span> <span class="subtitle is-6"> {{user.name}} {{user.lastname}}</span><br>
+            <span class="title is-5" >Email: </span><span class="subtitle is-6"> {{user.email}}</span><br>
+            <span class="title is-5">Tipo de perfil:</span> <span class="subtitle is-6">{{user.role}}</span><br>
+            <span class="title is-5">Teléfono: </span><span class="subtitle is-6">{{user.phonenumber}}</span><br>
+            <footer class="card-footer">
+               <a  class="card-footer-item button is-link" href="/profile/{{user._id}}/edit">Editar perfil</a>
+               </footer>
+              </div>
+              </div>
+              </div>
+ 
           {{#if isFixer}} 
-           <h2>Asistencias aceptadas</h2>
+           <h2 class="title is-2">Asistencias aceptadas</h2>
           {{#each asistencias as |asistencia| }}
-            <div>
-              <h3>Tipo de asistencia: {{asistencia.tipo}}</h3>
-              <span>Dirección de asistencia: {{asistencia.location.address}}</span>
-                  <div>
-                    <h4>Datos del solicitante:</h4>
-                    <img width="100px" height="100px" src="{{asistencia.solicitante.image}}" alt="{{asistencia.solicitante.name}}">
-                    <p>Nombre: {{asistencia.solicitante.name}} {{asistencia.solicitante.lastname}}</p>
-                    <p>Email: {{asistencia.solicitante.email}}</p>
-                    <p>Teléfono: {{asistencia.solicitante.phonenumber}}</p>
-                  </div>
-                  <a href="/asistencias/{{asistencia._id}}"> Ver la ubicación del solicitante</a>
-                {{#each asistencia.images as |image|}}
-                     <img width="100px" src="{{image}}" alt="">
-                {{/each}}
-                <p>Descripción: {{asistencia.description}}</p>
-                <strong>Status:{{asistencia.status}}</strong>
-             </div>
-          {{/each}}
+            <div class="card-content">
+                <div class="media">
+                <div class="media-left">
+              <span class="title is-5">Tipo de asistencia: </span>{{asistencia.tipo}}</span><br>
+              <span class="title is-5">Dirección de asistencia: </span>{{asistencia.location.address}}</span><br>
+                    <span class="title is-5">Datos del solicitante:</span><br>
+                    <img width="100px" height="100px" src="{{asistencia.solicitante.image}}" alt="{{asistencia.solicitante.name}}"></span><br>
+                    <span class="title is-5">Nombre:</span> <span class="subtitle is-6">{{asistencia.solicitante.name}} {{asistencia.solicitante.lastname}}</span><br>
+                    <span class="title is-5">Email:</span> <span class="subtitle is-6">{{asistencia.solicitante.email}}</span><br>
+                    <span class="title is-5">Teléfono:</span> <span class="subtitle is-6">{{asistencia.solicitante.phonenumber}}</span><br>
+                   
+            {{#each asistencia.images as |image|}}
+            <img width="100px" height="100px" src="{{image}}" alt="">
+            {{/each}}
+            <span class="title is-5">Descripción:</span> <span class="subtitle is-6">{{asistencia.description}}</span><br>
+            <span class="title is-5">Status:</span><span class="subtitle is-6">{{asistencia.status}}</span><br>
+            <a class=" button is-link" href="/asistencias/{{asistencia._id}}"> Ver la ubicación del solicitante</a> <br>
+            </div>
+            {{/each}}
+            </div>
+                    </div>
+                            </div>
+               
           {{else}}
-          <h2>Asistencias Solicitadas</h2>
+          <h2 class="title is-2">Asistencias Solicitadas</h2>
           {{#each asistencias as |asistencia| }}
-            <div>
-              <h3>Tipo de asistencia: {{asistencia.tipo}}</h3>
-              <span>Dirección asistencia: {{asistencia.location.address}}</span>
-                 <div>
-                    <h4>Datos de tu Fixer:</h4>
-                    <img width="100px" height="100px"src="{{asistencia.fixer.image}}" alt="">
-                    <p>Nombre : {{asistencia.fixer.name}} {{asistencia.fixer.lastname}}</p>
-                    <p>Email: {{asistencia.fixer.email}}</p>
-                    <p>Teléfono: {{asistencia.fixer.phonenumber}}</p>
-                 </div>
+          <span class="title is-5">Tipo de asistencia: </span><span class="subtitle is-6"></span>{{asistencia.tipo}}</span><br>
+          <span class="title is-5">Dirección asistencia: </span><span class="subtitle is-6"></span>{{asistencia.location.address}}</span><br>
+          <span class="title is-5">Datos de tu Fixer:</span><br>
+                    <img width="100px" height="100px"src="{{asistencia.fixer.image}}" alt=""><br>
+        <span class="title is-5">Nombre : </span><span class="subtitle is-6"></span>{{asistencia.fixer.name}} {{asistencia.fixer.lastname}}</span><br>
+            <span class="title is-5">Email: </span><span class="subtitle is-6"></span>{{asistencia.fixer.email}}</span><br>
+        <span class="title is-5">Teléfono: </span><span class="subtitle is-6"></span>{{asistencia.fixer.phonenumber}}</span><br>
+                    <span class="title is-5">Imágenes del problema</span><br>
                 {{#each asistencia.images as |image|}}
-                     <p>Imágenes del problema</p>
-                     <img width="100px" height="100px" src="{{image}}" alt="">
+                                    <img width="100px" height="100px" src="{{image}}" alt="">
                 {{/each}}
-                <p>Descripción: {{asistencia.description}}</p>
-                <strong>Status: {{asistencia.status}}</strong>
-             </div>
+                <span class="title is-5">Descripción: </span><span class="subtitle is-6">{{asistencia.description}}</span><br>
+              <span class="title is-5">Status: </span><span class="subtitle is-6">{{asistencia.status}}</span><br>
             <form action="/asistencias/cancelar" method="POST">
               <input type="text" hidden value="{{asistencia._id}}" name="id">
-              <button type="submit">Cancelar asistencia</button>
+              <button class="button is-danger" type="submit">Cancelar asistencia</button>
             </form>
           {{/each}}
           {{/if}}
+        </div>
         </div>

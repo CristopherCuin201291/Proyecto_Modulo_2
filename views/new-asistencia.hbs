@@ -1,44 +1,65 @@
-      <h2>
-        {{#if asistencia}}
-        <button type="submit">Edita tu solicitud de asistencia</button>
-        
-        {{else}}
-       <h2>Solicita una asistencia</h2> 
-        {{/if}}
-      </h2>
-      <form {{#if asistencia}} action="/asistencias/{{asistencia._id}}/edit" {{else}} action="/asistencias/new" {{/if}}
-        enctype="multipart/form-data" method="POST">
+<section>
+  <div class="columns is-mobile is-centered">
+    <div clas="column is-8"> <br><br>
+       <h2 class=" columns is-centered title is-2">Solicita una asistencia</h2> 
+<form {{#if asistencia}} action="/asistencias/{{asistencia._id}}/edit" {{else}} action="/asistencias/new" {{/if}}
+  enctype="multipart/form-data" method="POST">
+  <div class="box ">
 
-            <div>
+<div class="field">
+  <div class="control">
+    <div class="select">
               <select name="tipo">
             <option selected disabled>Selecciona un servicio</option>
               <option value="Cambio de llanta">Cambio de llanta</option>
                <option value='Paso de corriente'>Paso de corriente</option>
                <option value="Servicio de grúa">Servicio de grúa</option>
                <option value="Abasto de gasolina">Abasto de gasolina</option>
-            </select>
-            <textarea name="description"
-              placeholder="Ingresa una descripción de tu problema (opcional)">{{asistencia.description}}</textarea>
-              <input name="images" type="file" multiple>
+               </select>
+            </div>
+            </div>
             </div>
 
-           <div>
+<div class="field">
+  <label class="label">Ingresa una descripción de tu problema (opcional)</label>
+  <div class="control">
+            <textarea class="textarea" name="description"
+              placeholder="Ingresa una descripción de tu problema (opcional)">{{asistencia.description}}</textarea>
+              </div>
+              </div>
+  <div class="field">
+  <div class="control">
               <input hidden id="address" name="address" type="text" placeholder=""
               value="{{asistencia.location.address}}">
             <input hidden id="lat" name="lat"  type="text" value="{{asistencia.location.coordinates.[0]}}">
             <input hidden id="lng" name="lng" type="text" value="{{asistencia.location.coordinates.[1]}}">
-           </div>
-<div>Ingresa tu ubicación actual</div>
-        <div>
-          <div id="search"></div>
-          <div id='map' style='display: inline-flex;width: 400px; height: 300px;'></div>
+            </div>
+            </div>
+
+<div class="field">
+  <label class="label">Ingresa tu ubicación actual</label>
+  <div class="control">
+          <div class="textarea" id="search"></div>
+          </div>
+          </div>
+          <div class="field">
+            <div class="control">
+          <div id='map' style='display: inline-flex;width: 500px; height: 400px;'></div>
+        </div>
         </div>
 
-        <button type="submit">
+    <footer class="card-footer">
+        <button class="button is-success column centered"  type="submit">
           Enviar ubicación
         </button>
-
+        </footer>
+       
+</div>
       </form>
+      </div>
+      </div>
+</section>
+
 
 <script>
   const address = document.getElementById("address");

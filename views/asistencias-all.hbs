@@ -1,24 +1,31 @@
-<h1>Encuentra las solicitudes para asistencias</h1>
+<section>
+<br>
+<h2 class="title is-2">Encuentra las solicitudes para asistencias</h2>
 
 {{#each asistencias as |asistencia| }}
-<div>
-  <h3>Tipo de asistencia{{asistencia.tipo}}</h3>
-  <span>Dirección de asistencia: {{asistencia.location.address}}</span>
-  <div>
-    <h4>Datos del solicitante:</h4>
-    <p><img width="100px" height="100px" src="{{asistencia.solicitante.image}}" alt=""></p>
-    <p>Nombre: {{asistencia.solicitante.name}} {{asistencia.solicitante.lastname}}</p>
-    <p>Email: {{asistencia.solicitante.email}}</p>
-    <p>Teléfono: {{asistencia.solicitante.phonenumber}}</p>
-  </div>
+<div class="card-content">
+  <div class="media">
+    <div class="media-left">
+  <span class="title is-5">Tipo de asistencia: </span><span class="subtitle is-6">{{asistencia.tipo}}</span><br>
+<span class="title is-5">Dirección de asistencia:</span> <span class="subtitle is-6">{{asistencia.location.address}}</span><br>
+<span class="title is-5">Datos del solicitante:</span><br>
+  <img width="100px" height="100px" src="{{asistencia.solicitante.image}}" alt="{{asistencia.solicitante.name}}"> <br>
+<span class="title is-5">Nombre:</span> <span class="subtitle is-6">{{asistencia.solicitante.name}} {{asistencia.solicitante.lastname}}</span><br>
+    <span class="title is-5">Email:</span> <span class="subtitle is-6">{{asistencia.solicitante.email}}</span><br>
+  <span class="title is-5">Teléfono:</span> <span class="subtitle is-6">{{asistencia.solicitante.phonenumber}}</span><br>
   {{#each asistencia.images as |image|}}
   <img width="100px" src="{{image}}" alt="">
   {{/each}}
-  <p>Descripción: {{asistencia.description}}</p>
-  <strong>Status: {{asistencia.status}}</strong>
-</div>
+<span class="title is-5">Descripción:</span><span class="subtitle is-6"> {{asistencia.description}}</span><br>
+  <span class="title is-5">Status:</span><span class="subtitle is-6">{{asistencia.status}}</span><br>
 <form action="/asistencias" method="POST">
   <input type="text" hidden value="{{asistencia._id}}" name="id">
+  <footer class="card-footer">
   <button type="submit">Aceptar asistencia</button>
+    </footer>
 </form>
+</div>
+</div>
+</div>
 {{/each}}
+</section>

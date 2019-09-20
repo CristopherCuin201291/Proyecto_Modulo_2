@@ -1,44 +1,41 @@
 <section>
-  <div >
-    <div >
-      <h2 >
-        Editar Perfil
-      </h2>
+<div class="columns is-mobile is-centered">
+  <div clas="column is-8"> <br>
+         <h2 class="title is-2" >        Editar Perfil      </h2>
+         <div class="box ">
+ 
       <form action="/profile/{{user._id}}/edit"  enctype="multipart/form-data" method="POST">
-        <div >
-          <div >
+  <div class="field">
+    <div class="control">
             <input name="name"  type="text" placeholder="Ingresa tu nombre" value="{{user.name}}">
-          </div>
-        </div>
-        <div >
-          <div >
+</div>
+</div>
+  <div class="field">
+    <div class="control">
             <input name="lastname" class="uk-input" type="text" placeholder="Ingresa tu apellido"
               value="{{user.lastname}}">
-          </div>
-        </div>
-        <div >
-          <div >
+</div>
+</div>
+  <div class="field">
+    <div class="control">
             <input disabled name="email"  type="email" placeholder="Ingresa tu email"
               value="{{user.email}}">
-          </div>
-        </div>
-        <div >
-          <div >
-            <div >
+  </div>
+  </div>
+      <div class="field">
+        <label class="label">Actualiza tu foto de perfil</label>
+        <div class="control">
               <input name="image" type="file">
-             
             </div>
-          </div>
-        </div>
+            </div>
         {{#if err.message}}
-        <div>
           <p>{{err.message}}</p>
-        </div>
         {{/if}}
-        <button >
+        <button class="button is-success" >
         Actualizar Perfil
         </button>
       </form>
+      </div>
     </div>
   </div>
 </section>

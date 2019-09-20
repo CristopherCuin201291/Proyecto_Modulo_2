@@ -1,14 +1,22 @@
-<h1>Consulta la ruta para llegar al usuario</h1>
-<strong>Servicio: {{asistencia.tipo}}</strong>
-<p>Descripción: {{asistencia.description}}</p>
-<p>Direccion: {{asistencia.location.address}}</p>
-<p>Nombre: {{asistencia.solicitante.name}} {{asistencia.solicitante.lastname}}</p>
-<p>Teléfono: {{asistencia.solicitante.phonenumber}}</p>
-
-<p> Para dirigirte a la ubicación del usuario primero presiona tu ubicación en el mapa (marcador rojo) , después presiona la ruta del usuario que solicita (marcador azul) </p>
+<section><br>
+<h2 class="title is-2">Consulta la ruta para llegar al usuario</h2>
+<div class=box>
+<div class="card-content">
+<span class="title is-5">Servicio: </span><span class="subtitle is-6"></span>{{asistencia.tipo}}</span> <br>
+<span class="title is-5">Descripción: </span><span class="subtitle is-6"></span>{{asistencia.description}}</span><br>
+<span class="title is-5">Direccion: </span><span class="subtitle is-6"></span>{{asistencia.location.address}}</span><br>
+<img width="100px" height="100px" src="{{asistencia.solicitante.image}}"
+  alt="{{asistencia.solicitante.name}}"></span><br>
+<span class="title is-5">Nombre: </span><span class="subtitle is-6"></span>{{asistencia.solicitante.name}} {{asistencia.solicitante.lastname}}</span><br>
+<span class="title is-5">Teléfono: </span><span class="subtitle is-6"></span>{{asistencia.solicitante.phonenumber}}</span><br>
+<p class="title is-5">Instrucciones para llegar al solicitante: </p>
+<p class="subtitle is-10"> Selecciona tu ubicación en el mapa (marcador rojo) .</p>
+<p class="subtitle is-10">Selecciona la ubicación del usuario que solicita (marcador azul). </p>
+</div> 
+</div>
 
 <div >
-  <div id='map' style='width: 100%; height: 400px;'></div>
+  <div id='map' style='width: 80%; height: 400px;'></div>
 </div>
 
 <script>
@@ -35,7 +43,7 @@
         position.coords.longitude,
         position.coords.latitude
       ];
-      map.setZoom(12).setCenter(center);
+      map.setZoom(11).setCenter(center);
       new mapboxgl.Marker({ color: "red" })
           .setLngLat(center)
           .setPopup(new mapboxgl.Popup().setHTML("<p>Usted está aquí</p>"))
@@ -51,3 +59,4 @@
           .setPopup(new mapboxgl.Popup().setHTML("<p>Dirección del servicio solicitado</p>"))
           .addTo(map);
 </script>
+</section>
